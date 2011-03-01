@@ -3,7 +3,7 @@
 Plugin Name: Sticky Slider
 Plugin URI: http://www.blogtycoon.net/wordpress-plugins/sticky-slider/
 Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
-Version: 1.0
+Version: 1.1
 Author: Ciprian Popescu
 Author URI: http://www.blogtycoon.net/
 License: GNU General Public License v3.0
@@ -46,12 +46,20 @@ function sticky_slider_scripts() {
 	?>
 	<style type="text/css">
 	#featured { height: 200px; overflow: hidden; }
+
+	.slider-controls {float: left;}
+	.sticky-clear {clear:both;}
+
+	#slider-nav { float: right;}
+	#slider-nav a { border: 1px solid #DDDDDD; background-color: #EEEEEE; text-decoration: none; margin: 0 1px; padding: 3px 5px; font-size: 9px; text-shadow: 0 -1px 0 #FFFFFF; }
+	#slider-nav a.activeSlide { background-color: #DDDDDD; }
+	#slider-nav a:focus { outline: none; }
 	</style>
 
-	<script type="text/javascript" src="<?php echo STICKY_SLIDER_URL;?>/jquery.cycle.lite.min.js"></script>
+	<script type="text/javascript" src="<?php echo STICKY_SLIDER_URL;?>/jquery.cycle.min.js"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery("#featured").after('<div id="slider-nav">').cycle({
+		jQuery("#featured").cycle({
 			next: '#slider-next',
 			prev: '#slider-prev',
 			pager: '#slider-nav',
@@ -138,6 +146,8 @@ function sticky_slider() {
 				<a id="slider-prev" class="slider-control" href="#" title="Previous Post">&laquo; Previous</a>
 				<a id="slider-next" class="slider-control" href="#" title="Next Post">Next &raquo;</a>
 			</div>
+			<div id="slider-nav"></div>
+			<div class="sticky-clear"></div>
 			<div id="featured">
 				<?php
 				$sticky_slides = get_option('sticky_slides');

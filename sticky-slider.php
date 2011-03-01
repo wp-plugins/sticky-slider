@@ -3,7 +3,7 @@
 Plugin Name: Sticky Slider
 Plugin URI: http://www.blogtycoon.net/wordpress-plugins/sticky-slider/
 Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
-Version: 1.1
+Version: 1.1.1
 Author: Ciprian Popescu
 Author URI: http://www.blogtycoon.net/
 License: GNU General Public License v3.0
@@ -27,14 +27,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 phpMyAdmin is licensed under the terms of the GNU General Public License
 version 2, as published by the Free Software Foundation.
 */
-if(!defined('WP_CONTENT_URL'))
-	define('WP_CONTENT_URL', get_option('siteurl').'/wp-content');
-if(!defined( 'WP_PLUGIN_URL'))
-	define('WP_PLUGIN_URL', WP_CONTENT_URL.'/plugins');
-if(!defined('WP_CONTENT_DIR'))
-	define('WP_CONTENT_DIR', ABSPATH.'wp-content');
-if(!defined('WP_PLUGIN_DIR'))
-	define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
+if(!defined('WP_CONTENT_URL')) define('WP_CONTENT_URL', get_option('siteurl').'/wp-content');
+if(!defined( 'WP_PLUGIN_URL')) define('WP_PLUGIN_URL', WP_CONTENT_URL.'/plugins');
+if(!defined('WP_CONTENT_DIR')) define('WP_CONTENT_DIR', ABSPATH.'wp-content');
+if(!defined('WP_PLUGIN_DIR')) define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 
 define('STICKY_SLIDER_URL', WP_PLUGIN_URL.'/sticky-slider');
 define('STICKY_SLIDER_PATH', WP_PLUGIN_DIR.'/sticky-slider');
@@ -44,11 +40,13 @@ function sticky_slider_scripts() {
 	$sticky_timer = get_option('sticky_timer');
 	$sticky_timer = $sticky_timer * 1000;
 	?>
+	<!-- // Begin Sticky Slider Options -->
 	<style type="text/css">
 	#featured { height: 200px; overflow: hidden; }
+	#featured h2 { font-size: 24px; }
 
-	.slider-controls {float: left;}
-	.sticky-clear {clear:both;}
+	.slider-controls { float: left; }
+	.sticky-clear { clear:both; }
 
 	#slider-nav { float: right;}
 	#slider-nav a { border: 1px solid #DDDDDD; background-color: #EEEEEE; text-decoration: none; margin: 0 1px; padding: 3px 5px; font-size: 9px; text-shadow: 0 -1px 0 #FFFFFF; }
@@ -63,12 +61,14 @@ function sticky_slider_scripts() {
 			next: '#slider-next',
 			prev: '#slider-prev',
 			pager: '#slider-nav',
+			pauseOnPagerHover: 1, // pause when hovering over pager link
 			timeout: <?php echo $sticky_timer;?>,
 			delay: -4000,
 			speed: 800,
 		});
 	});
 	</script>
+	<!-- // End Sticky Slider Options -->
 	<?php
 	wp_enqueue_script('jquery');
 }
@@ -110,18 +110,21 @@ function sticky_slider_plugin_options() {
 		<?php
 	}
 	echo '<div class="wrap">';
+		echo '<div id="icon-tools" class="icon32"></div>';
 		echo '<h2>Sticky Slider Settings</h2>';
 		?>
 		<form name="form1" method="post" action="">
 			<input type="hidden" name="<?php echo $hidden_field_name;?>" value="Y" />
 			<p>
-				Number of slides: <input type="text" name="<?php echo $data_field_name_1;?>" value="<?php echo $option_value_data_1;?>" size="10" />
-				<span class="description">How many sticky posts do you want to slide? Default is 5.</span>
+				<input type="text" name="<?php echo $data_field_name_1;?>" id="<?php echo $data_field_name_1;?>" value="<?php echo $option_value_data_1;?>" size="3" /> 
+				<label for="<?php echo $data_field_name_1;?>">Number of slides</label>
 			</p>
+			<p><span class="description">How many sticky posts do you want to slide? Default is 5.</span></p>
 			<p>
-				Slides timeout: <input type="text" name="<?php echo $data_field_name_2;?>" value="<?php echo $option_value_data_2;?>" size="10" />
-				<span class="description">How long should a sticky post display before sliding the next one? Default is 4.</span>
-			</p>
+				<input type="text" name="<?php echo $data_field_name_2;?>" id="<?php echo $data_field_name_2;?>" value="<?php echo $option_value_data_2;?>" size="3" /> 
+				<label for="<?php echo $data_field_name_2;?>">Slides timeout (in seconds)</label>
+			<p>
+			<p><span class="description">How long should a sticky post display before sliding the next one? Default is 4.</span></p>
 			<p class="submit">
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes');?>" />
 			</p>

@@ -4,7 +4,7 @@ Donate link: http://www.blogtycoon.net/
 Tags: slider, slides, sticky, featured, cycle, jquery
 Requires at least: 2.7
 Tested up to: 3.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 == Description ==
 
@@ -27,7 +27,18 @@ Check the [official homepage](http://www.blogtycoon.net/wordpress-plugins/sticky
 
 You need to add the `<?php if(function_exists('sticky_slider')) sticky_slider();?>` PHP function to the index template.
 
+== Screenshots ==
+
+1. Front-end slider with navigation and pagination
+2. Back-end section
+
 == Changelog ==
+
+= 1.1.1 =
+* Administration UI improvements
+* Added pause when hovering on pagination
+* Added title size as some themes don't have proper heading styles
+* Added screenshots for WordPress plugin repository
 
 = 1.1 =
 * Added pagination

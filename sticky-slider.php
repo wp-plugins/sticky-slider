@@ -3,7 +3,7 @@
 Plugin Name: Sticky Slider
 Plugin URI: http://www.blogtycoon.net/wordpress-plugins/sticky-slider/
 Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
-Version: 1.1.1
+Version: 1.1.2
 Author: Ciprian Popescu
 Author URI: http://www.blogtycoon.net/
 License: GNU General Public License v3.0
@@ -40,7 +40,7 @@ function sticky_slider_scripts() {
 	$sticky_timer = get_option('sticky_timer');
 	$sticky_timer = $sticky_timer * 1000;
 	?>
-	<!-- // Begin Sticky Slider Options -->
+	<!-- // Begin Sticky Slider Head Options -->
 	<style type="text/css">
 	#featured { height: 200px; overflow: hidden; }
 	#featured h2 { font-size: 24px; }
@@ -49,7 +49,7 @@ function sticky_slider_scripts() {
 	.sticky-clear { clear:both; }
 
 	#slider-nav { float: right;}
-	#slider-nav a { border: 1px solid #DDDDDD; background-color: #EEEEEE; text-decoration: none; margin: 0 1px; padding: 3px 5px; font-size: 9px; text-shadow: 0 -1px 0 #FFFFFF; }
+	#slider-nav a { border: 1px solid #DDDDDD; background-color: #EEEEEE; text-decoration: none; margin: 0 1px; padding: 3px 5px; font-size: 9px; }
 	#slider-nav a.activeSlide { background-color: #DDDDDD; }
 	#slider-nav a:focus { outline: none; }
 	</style>
@@ -68,7 +68,7 @@ function sticky_slider_scripts() {
 		});
 	});
 	</script>
-	<!-- // End Sticky Slider Options -->
+	<!-- // End Sticky Slider Head Options -->
 	<?php
 	wp_enqueue_script('jquery');
 }
@@ -98,7 +98,7 @@ function sticky_slider_plugin_options() {
     $option_value_data_1 = get_option('sticky_slides');
     $option_value_data_2 = get_option('sticky_timer');
 
-    // See if the user has posted us some information // if they did, this hidden field will be set to 'Y'
+    // See if the user has posted us some information // if yes, this hidden field will be set to 'Y'
 	if(isset($_POST[$hidden_field_name]) && $_POST[$hidden_field_name] == 'Y') {
 		$option_value_data_1 = $_POST[$data_field_name_1];
 		$option_value_data_2 = $_POST[$data_field_name_2];

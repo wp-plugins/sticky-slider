@@ -4,7 +4,7 @@ Donate link: http://www.blogtycoon.net/
 Tags: slider, slides, sticky, featured, cycle, jquery
 Requires at least: 2.7
 Tested up to: 3.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 == Description ==
 
@@ -33,6 +33,9 @@ You need to add the `<?php if(function_exists('sticky_slider')) sticky_slider();
 2. Back-end section
 
 == Changelog ==
+
+= 1.1.2 =
+* Removed shadow from pagination to have a consistent look for dark layouts
 
 = 1.1.1 =
 * Administration UI improvements

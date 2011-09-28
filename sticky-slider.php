@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Sticky Slider
-Plugin URI: http://www.getbutterfly.com/wordpress-plugins/sticky-slider/
+Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
 Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
-Version: 1.1.2.1
+Version: 1.1.2.2
 Author: Ciprian Popescu
-Author URI: http://www.getbutterfly.com/
+Author URI: http://getbutterfly.com/
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,18 +27,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 phpMyAdmin is licensed under the terms of the GNU General Public License
 version 2, as published by the Free Software Foundation.
 */
-if(!defined('WP_CONTENT_URL')) define('WP_CONTENT_URL', get_option('siteurl').'/wp-content');
-if(!defined( 'WP_PLUGIN_URL')) define('WP_PLUGIN_URL', WP_CONTENT_URL.'/plugins');
-if(!defined('WP_CONTENT_DIR')) define('WP_CONTENT_DIR', ABSPATH.'wp-content');
-if(!defined('WP_PLUGIN_DIR')) define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
+if(!defined('WP_CONTENT_URL')) 	define('WP_CONTENT_URL', get_option('siteurl').'/wp-content');
+if(!defined('WP_PLUGIN_URL')) 	define('WP_PLUGIN_URL', WP_CONTENT_URL.'/plugins');
+if(!defined('WP_CONTENT_DIR')) 	define('WP_CONTENT_DIR', ABSPATH.'wp-content');
+if(!defined('WP_PLUGIN_DIR')) 	define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 
 define('STICKY_SLIDER_URL', WP_PLUGIN_URL.'/sticky-slider');
 define('STICKY_SLIDER_PATH', WP_PLUGIN_DIR.'/sticky-slider');
 
 // Begin display functions
 function sticky_slider_scripts() {
-	$sticky_timer = get_option('sticky_timer');
-	$sticky_timer = $sticky_timer * 1000;
 	?>
 	<!-- // Begin Sticky Slider Head Options -->
 	<style type="text/css">
@@ -53,11 +51,18 @@ function sticky_slider_scripts() {
 	#slider-nav a.activeSlide { background-color: #DDDDDD; }
 	#slider-nav a:focus { outline: none; }
 	</style>
-
+	<?php
+	wp_enqueue_script('jquery');
+}
+function sticky_slider_cycle() {
+	$sticky_timer = get_option('sticky_timer');
+	$sticky_timer = $sticky_timer * 1000;
+	?>
+	<!-- // Begin Sticky Slider Head Options -->
 	<script type="text/javascript" src="<?php echo STICKY_SLIDER_URL;?>/jquery.cycle.min.js"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery("#featured").cycle({
+		jQuery('#featured').cycle({
 			next: '#slider-next',
 			prev: '#slider-prev',
 			pager: '#slider-nav',
@@ -70,7 +75,6 @@ function sticky_slider_scripts() {
 	</script>
 	<!-- // End Sticky Slider Head Options -->
 	<?php
-	wp_enqueue_script('jquery');
 }
 // End display functions
 
@@ -91,25 +95,18 @@ function sticky_slider_plugin_options() {
 	$hidden_field_name = 'sticky_submit_hidden';
 	$data_field_name_1 = 'sticky_slides';
 	$data_field_name_2 = 'sticky_timer';
-	$data_field_name_3 = 'sticky_category';
 
 	// read in existing option value from database
     $option_value_data_1 = get_option('sticky_slides');
     $option_value_data_2 = get_option('sticky_timer');
-    $option_value_data_3 = get_option('sticky_category');
-
-	// create a categories dropdown
-	$cat_select = wp_dropdown_categories('show_option_none=Select category&show_count=1&orderby=name&echo=0');
 
     // See if the user has posted us some information // if yes, this hidden field will be set to 'Y'
 	if(isset($_POST[$hidden_field_name]) && $_POST[$hidden_field_name] == 'Y') {
 		$option_value_data_1 = $_POST[$data_field_name_1];
 		$option_value_data_2 = $_POST[$data_field_name_2];
-		$option_value_data_3 = $_POST['cat'];
 
 		update_option('sticky_slides', $option_value_data_1);
 		update_option('sticky_timer', $option_value_data_2);
-		update_option('sticky_category', $option_value_data_3);
 		?>
 		<div class="updated"><p><strong>Settings saved</strong></p></div>
 		<?php
@@ -130,24 +127,21 @@ function sticky_slider_plugin_options() {
 				<label for="<?php echo $data_field_name_2;?>">Slides timeout (in seconds)</label>
 			<p>
 			<p><span class="description">How long should a sticky post display before sliding the next one? Default is 4.</span></p>
-			<p>
-				<?php echo $cat_select;?> Selected: <?php echo $option_value_data_3;?>
-			</p>
-			<p><span class="description">Selecting a category above will bypass all sticky posts and show posts from the selected category.</span></p>
 			<p class="submit">
-				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e('Save Changes');?>" />
+				<input type="submit" name="submit" class="button-primary" value="Save Changes" />
 			</p>
 		</form>
 
 		<hr />
 		<p>Add the <code>&lt;?php if(function_exists('sticky_slider')) sticky_slider();?&gt;</code> function to your index.php before <code>&lt;?php if(have_posts()) : while(have_posts()) : the_post();?&gt;</code> line.</p>
 
-		<p>For support, feature requests and bug reporting, please visit the <a href="http://www.getbutterfly.com/wordpress-plugins/sticky-slider/" rel="external">official web site</a>, or rate it on <a href="http://wordpress.org/extend/plugins/sticky-slider/" rel="external">WordPress plugin repository.</a></p>
+		<p>For support, feature requests and bug reporting, please visit the <a href="http://getbutterfly.com/wordpress-plugins/sticky-slider/" rel="external">official web site</a>, or rate it on <a href="http://wordpress.org/extend/plugins/sticky-slider/" rel="external">WordPress plugin repository.</a></p>
 	</div>
 <?php
 }
 
-add_action('wp_head', 'sticky_slider_scripts');
+add_action('init', 'sticky_slider_scripts');
+add_action('wp_footer', 'sticky_slider_cycle');
 
 function sticky_slider() {
 	?>
@@ -162,21 +156,12 @@ function sticky_slider() {
 			<div id="featured">
 				<?php
 				$sticky_slides = get_option('sticky_slides');
-				$sticky_category = get_option('sticky_category');
 				$sticky_posts = get_option('sticky_posts');
-
-
-//				if($sticky_category == '-1')
-//					$loop = new WP_Query('post_type=post&showposts='.$sticky_slides.'&post__in='.$sticky_posts);
-//				if($sticky_category != '-1')
-//					$loop = new WP_Query($args);
-
 
 				$loop = new WP_Query(array(
 					'post_type' => 'post',
 					'showposts' => '2',
-					//'post__in'  => $sticky_posts,
-					'post__in' 	=> array(30)
+					'post__in'  => $sticky_posts,
 				));
 				while($loop->have_posts()) : $loop->the_post();
 					?>

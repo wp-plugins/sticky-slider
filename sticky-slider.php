@@ -3,7 +3,7 @@
 Plugin Name: Responsive Sticky Slider
 Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
 Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
-Version: 1.2.1
+Version: 1.2.2
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
 License: GNU General Public License v3.0
@@ -42,22 +42,15 @@ load_plugin_textdomain('rssl', false, $plugin_dir . '/languages');
 add_shortcode('sticky-slider', 'sticky_slider');
 
 // Begin display functions
+function sticky_slider_head() {
+	echo '<link type="text/css" rel="stylesheet" href="' . STICKY_SLIDER_URL . '/css/rss.css">';
+}
 function sticky_slider_scripts() {
-	?>
-	<!-- // Begin Sticky Slider Head Options -->
-	<style type="text/css">
-	#featured { height: 200px; overflow: hidden; }
+	wp_register_script('jquery.cycle', STICKY_SLIDER_URL . '/js/jquery.cycle.all.js', array('jquery'), '2.9999.81');
+	wp_register_script('jquery.easing', STICKY_SLIDER_URL . '/js/jquery.easing.1.3.js', array('jquery'), '1,3');
 
-	.slider-controls { float: left; }
-	.sticky-clear { clear: both; }
-
-	#slider-nav { float: right;}
-	#slider-nav a { border: 1px solid #DDDDDD; background-color: #EEEEEE; text-decoration: none; margin: 0 1px; padding: 3px 5px; font-size: 9px; }
-	#slider-nav a.activeSlide { background-color: #DDDDDD; }
-	#slider-nav a:focus { outline: none; }
-	</style>
-	<?php
-	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery.cycle');	
+	wp_enqueue_script('jquery.easing');	
 }
 function sticky_slider_cycle() {
 	$sticky_timer = get_option('sticky_timer');
@@ -65,25 +58,9 @@ function sticky_slider_cycle() {
 	$sticky_fx = get_option('sticky_fx');
 	$sticky_easing = get_option('sticky_easing');
 	?>
-	<!-- // Begin Sticky Slider Head Options -->
-	<script src="<?php echo STICKY_SLIDER_URL; ?>/jquery.cycle.all.js"></script>
-	<script src="<?php echo STICKY_SLIDER_URL; ?>/jquery.easing.1.3.js"></script>
-	<script>
-	jQuery(document).ready(function(){
-		jQuery('#featured').cycle({
-			next: '#slider-next',
-			prev: '#slider-prev',
-			pager: '#slider-nav',
-			pauseOnPagerHover: 1, // pause when hovering over pager link
-			timeout: <?php echo $sticky_timer; ?>,
-			delay: -4000,
-			speed: 800,
-			fx: '<?php echo $sticky_fx; ?>',
-			easing: '<?php echo $sticky_easing; ?>',
-		});
-	});
-	</script>
-	<!-- // End Sticky Slider Head Options -->
+	<!-- // Begin Responsive Sticky Slider -->
+	<script>jQuery(document).ready(function(){ jQuery('#featured').cycle({ next: '#slider-next', prev: '#slider-prev', pager: '#slider-nav', pauseOnPagerHover: 1, timeout: <?php echo $sticky_timer; ?>, fx: '<?php echo $sticky_fx; ?>', easing: '<?php echo $sticky_easing; ?>' }); });</script>
+	<!-- // End Responsive Sticky Slider -->
 	<?php
 }
 // End display functions
@@ -251,6 +228,7 @@ function sticky_slider_plugin_options() {
 }
 
 add_action('init', 'sticky_slider_scripts');
+add_action('wp_head', 'sticky_slider_head');
 add_action('wp_footer', 'sticky_slider_cycle');
 
 function sticky_slider() {

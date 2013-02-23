@@ -4,7 +4,7 @@ Donate link: http://getbutterfly.com/
 Tags: slider, slides, sticky, featured, cycle, jquery
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 == Description ==
 
@@ -35,6 +35,11 @@ You need to add the `<?php if(function_exists('sticky_slider')) { sticky_slider(
 2. Back-end section
 
 == Changelog ==
+
+= 1.2.5 =
+* Better script inclusion
+* No inline CSS styles
+* Speed improvements
 
 = 1.2.1 =
 * Added transition options

@@ -1,16 +1,18 @@
-=== Sticky Slider ===
+=== Responsive Sticky Slider ===
 Contributors: butterflymedia, getbutterfly
 Donate link: http://getbutterfly.com/
 Tags: slider, slides, sticky, featured, cycle, jquery
-Requires at least: 2.7
-Tested up to: 3.3
-Stable tag: 1.1.2.2
+Requires at least: 3.3
+Tested up to: 3.5.1
+Stable tag: 1.2.1
 
 == Description ==
 
-WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts. It features "Previous" and "Next" navigation and slides pagination.
+Simple, responsive post slider with pagination (previous/next and page numbers).
 
-In order to add a post to the slider, just mark it as sticky. Edit its Visibility in the Publish block while in the post writing page and check "Stick this post to the front page".
+Select transition type, easing type, number of slides, timeout and custom category and place the shortcode or the template tag in your post or page.
+
+The plugin is responsive and adapts to any page width, either for desktop or mobile systems.
 
 Check the [official homepage](http://getbutterfly.com/wordpress-plugins/sticky-slider/ "getButterfly") for feedback and support.
 
@@ -25,7 +27,7 @@ Check the [official homepage](http://getbutterfly.com/wordpress-plugins/sticky-s
 
 = How do I add the slider to my blog? =
 
-You need to add the `<?php if(function_exists('sticky_slider')) sticky_slider();?>` PHP function to the index template.
+You need to add the `<?php if(function_exists('sticky_slider')) { sticky_slider(); } ?>` PHP function to your template or place the `[sticky-slider]` shortcode anywhere on your post or page using the editor.
 
 == Screenshots ==
 
@@ -33,6 +35,15 @@ You need to add the `<?php if(function_exists('sticky_slider')) sticky_slider();
 2. Back-end section
 
 == Changelog ==
+
+= 1.2.1 =
+* Added transition options
+* Added easing options
+* Added custom category option
+* Added localization options
+* Updated Cycle plugin
+* Updated query type
+* Updated plugin compatibility
 
 = 1.1.2.2 =
 * Changed author URL address, again

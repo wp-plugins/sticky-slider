@@ -262,6 +262,7 @@ function sticky_slider() {
 				</div>
 				<?php
 			endwhile; endif;
+			wp_reset_query();
 			?>
 		</div>
 	</div>

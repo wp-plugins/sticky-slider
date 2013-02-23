@@ -235,8 +235,8 @@ function sticky_slider() {
 	?>
 	<div class="featured-wrapper">
 		<div class="slider-controls">
-			<a id="slider-prev" class="slider-control" href="#" title="<?php echo _('Previous', 'rssl'); ?>">&laquo; <?php echo _('Previous', 'rssl'); ?></a>
-			<a id="slider-next" class="slider-control" href="#" title="<?php echo _('Next', 'rssl'); ?>"><?php echo _('Next', 'rssl'); ?> &raquo;</a>
+			<a id="slider-prev" class="slider-control" href="#" title="<?php echo _('Previous', 'rssl'); ?>">&laquo; <?php echo _e('Previous', 'rssl'); ?></a>
+			<a id="slider-next" class="slider-control" href="#" title="<?php echo _('Next', 'rssl'); ?>"><?php echo _e('Next', 'rssl'); ?> &raquo;</a>
 		</div>
 		<div id="slider-nav"></div>
 		<div class="sticky-clear"></div>

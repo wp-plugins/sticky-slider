@@ -2,7 +2,7 @@
 /*
 Plugin Name: Responsive Sticky Slider
 Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
-Description: WordPress provides a way to mark certain posts as featured or sticky posts. Sticky posts will appear before other posts when listing them in index.php. This plugin creates a slider from sticky posts.
+Description: Simple, responsive post slider with pagination (previous/next and page numbers).
 Version: 1.2.2
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/

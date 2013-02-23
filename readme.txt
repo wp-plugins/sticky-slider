@@ -1,7 +1,7 @@
 === Responsive Sticky Slider ===
 Contributors: butterflymedia, getbutterfly
 Donate link: http://getbutterfly.com/
-Tags: slider, slides, sticky, featured, cycle, jquery
+Tags: slider, slides, sticky, featured, cycle, jquery, responsive
 Requires at least: 3.3
 Tested up to: 3.5.1
 Stable tag: 1.2.2

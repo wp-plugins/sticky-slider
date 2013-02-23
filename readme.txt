@@ -36,7 +36,7 @@ You need to add the `<?php if(function_exists('sticky_slider')) { sticky_slider(
 
 == Changelog ==
 
-= 1.2.5 =
+= 1.2.2 =
 * Better script inclusion
 * No inline CSS styles
 * Speed improvements

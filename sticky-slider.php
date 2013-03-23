@@ -3,7 +3,7 @@
 Plugin Name: Responsive Sticky Slider
 Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
 Description: Simple, responsive post slider with pagination (previous/next and page numbers).
-Version: 1.2.2
+Version: 1.2.2.1
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
 License: GNU General Public License v3.0
@@ -235,8 +235,8 @@ function sticky_slider() {
 	?>
 	<div class="featured-wrapper">
 		<div class="slider-controls">
-			<a id="slider-prev" class="slider-control" href="#" title="<?php echo _('Previous', 'rssl'); ?>">&laquo; <?php echo _e('Previous', 'rssl'); ?></a>
-			<a id="slider-next" class="slider-control" href="#" title="<?php echo _('Next', 'rssl'); ?>"><?php echo _e('Next', 'rssl'); ?> &raquo;</a>
+			<a id="slider-prev" class="slider-control" href="#" title="<?php echo _e('Previous', 'rssl'); ?>">&laquo; <?php echo _e('Previous', 'rssl'); ?></a>
+			<a id="slider-next" class="slider-control" href="#" title="<?php echo _e('Next', 'rssl'); ?>"><?php echo _e('Next', 'rssl'); ?> &raquo;</a>
 		</div>
 		<div id="slider-nav"></div>
 		<div class="sticky-clear"></div>

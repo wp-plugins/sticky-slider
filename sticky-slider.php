@@ -3,7 +3,7 @@
 Plugin Name: Responsive Sticky Slider
 Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
 Description: Simple, responsive post slider with pagination (previous/next and page numbers).
-Version: 1.2.2.1
+Version: 1.2.3
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
 License: GNU General Public License v3.0
@@ -92,7 +92,7 @@ function sticky_slider_plugin_options() {
 	}
 
 	$args = array(
-		'show_option_all'    => '',
+		'show_option_all'    => 'All categories',
 		'show_option_none'   => '',
 		'orderby'            => 'ID', 
 		'order'              => 'ASC',
@@ -222,7 +222,7 @@ function sticky_slider_plugin_options() {
 		<h3>Plugin Usage</h3>
 		<p>Add the <code>&lt;?php if(function_exists('sticky_slider')) { sticky_slider(); } ?&gt;</code> function to your page template or use the <code>[sticky-slider]</code> shortcode anywhere in your post or page.</p>
 
-		<p>For support, feature requests and bug reporting, please visit the <a href="http://getbutterfly.com/wordpress-plugins/sticky-slider/" rel="external">official web site</a>, or rate it on <a href="http://wordpress.org/extend/plugins/sticky-slider/" rel="external">WordPress plugin repository.</a></p>
+		<p>For support, feature requests and bug reporting, please visit the <a href="http://getbutterfly.com/wordpress-plugins-free/#sticky-slider" rel="external">official web site</a>, or rate it on <a href="http://wordpress.org/extend/plugins/sticky-slider/" rel="external">WordPress plugin repository.</a></p>
 	</div>
 <?php
 }

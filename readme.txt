@@ -1,10 +1,12 @@
 === Responsive Sticky Slider ===
 Contributors: butterflymedia, getbutterfly
-Donate link: http://getbutterfly.com/
+Donate link: http://getbutterfly.com/wordpress-plugins-free/
 Tags: slider, slides, sticky, featured, cycle, jquery, responsive
 Requires at least: 3.3
-Tested up to: 3.5.1
-Stable tag: 1.2.2.1
+Tested up to: 3.8
+Stable tag: 1.2.3
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
@@ -14,7 +16,7 @@ Select transition type, easing type, number of slides, timeout and custom catego
 
 The plugin is responsive and adapts to any page width, either for desktop or mobile systems.
 
-Check the [official homepage](http://getbutterfly.com/wordpress-plugins/sticky-slider/ "getButterfly") for feedback and support.
+Check the [official homepage](http://getbutterfly.com/wordpress-plugins-free/#sticky-slider "getButterfly") for feedback and support.
 
 == Installation ==
 
@@ -35,6 +37,10 @@ You need to add the `<?php if(function_exists('sticky_slider')) { sticky_slider(
 2. Back-end section
 
 == Changelog ==
+
+= 1.2.3 =
+* Added license link
+* Added donate link
 
 = 1.2.2.1 =
 * Fixed a PHP warning

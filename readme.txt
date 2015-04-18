@@ -1,10 +1,10 @@
 === Responsive Sticky Slider ===
-Contributors: butterflymedia, getbutterfly
+Contributors: butterflymedia
 Donate link: http://getbutterfly.com/wordpress-plugins-free/
 Tags: slider, slides, sticky, featured, cycle, jquery, responsive
-Requires at least: 3.3
-Tested up to: 3.8
-Stable tag: 1.2.3
+Requires at least: 4.0
+Tested up to: 4.1.1
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,6 +37,10 @@ You need to add the `<?php if(function_exists('sticky_slider')) { sticky_slider(
 2. Back-end section
 
 == Changelog ==
+
+= 1.2.3 =
+* UPDATE: Updated WordPress version
+* UPDATE: Added help and support links
 
 = 1.2.3 =
 * Added license link

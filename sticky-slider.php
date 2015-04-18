@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Responsive Sticky Slider
-Plugin URI: http://getbutterfly.com/wordpress-plugins/sticky-slider/
+Plugin URI: http://getbutterfly.com/wordpress-plugins-free/
 Description: Simple, responsive post slider with pagination (previous/next and page numbers).
-Version: 1.2.3
+Version: 1.2.4
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Copyright 2011, 2012, 2013 Ciprian Popescu (email: getbutterfly@gmail.com)
+Copyright 2011, 2012, 2013, 2014, 2015 Ciprian Popescu (email: getbutterfly@gmail.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -221,9 +221,14 @@ function sticky_slider_plugin_options() {
 
 		<h3>Plugin Usage</h3>
 		<p>Add the <code>&lt;?php if(function_exists('sticky_slider')) { sticky_slider(); } ?&gt;</code> function to your page template or use the <code>[sticky-slider]</code> shortcode anywhere in your post or page.</p>
-
-		<p>For support, feature requests and bug reporting, please visit the <a href="http://getbutterfly.com/wordpress-plugins-free/#sticky-slider" rel="external">official web site</a>, or rate it on <a href="http://wordpress.org/extend/plugins/sticky-slider/" rel="external">WordPress plugin repository.</a></p>
 	</div>
+
+    <div class="postbox">
+        <div class="inside">
+            <p>For support, feature requests and bug reporting, please visit the <a href="//getbutterfly.com/" rel="external">official website</a>.</p>
+            <p>&copy;<?php echo date('Y'); ?> <a href="//getbutterfly.com/" rel="external"><strong>getButterfly</strong>.com</a> &middot; <a href="//getbutterfly.com/forums/" rel="external">Support forums</a> &middot; <a href="//getbutterfly.com/trac/" rel="external">Trac</a> &middot; <small>Code wrangling since 2005</small></p>
+        </div>
+    </div>
 <?php
 }
 
